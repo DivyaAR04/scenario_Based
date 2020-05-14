@@ -1,0 +1,7 @@
+package com.Urbanladder.Senario;
+
+public class IdentifyClose 
+{
+	
+	
+}

@@ -1,0 +1,50 @@
+package locator;
+
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.google.common.io.Files;
+
+
+public class GetScreenshot {
+static
+{
+	System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
+}
+	
+	 public static void main(String[] args) throws Exception {
+	        FirefoxDriver driver = new FirefoxDriver();
+	        driver.get("https://www.guru99.com/all-about-testng-and-selenium.html");
+	        screenShot(driver);
+	     //   screenShot(driver);
+	      //  screenShot(driver);
+	        driver.quit();
+	    }
+
+	    public static void screenShot(FirefoxDriver driver) throws IOException, InterruptedException {
+	        File scr=(driver).getScreenshotAs(OutputType.FILE);
+	     
+	        SimpleDateFormat date1=new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+	        String d=date1.format(new Date());
+	        
+	        File dest= new File("ClassicSelenium1/screenshor"+d+".png");
+	        //File dest= new File("ClassicSelenium1/screenshor"+timestamp()+".png");
+	        FileUtils.copyFile(scr, dest);
+	        Thread.sleep(3000);
+	    }
+
+	  //  public static String timestamp() {
+	  //      return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
+	   // }
+	}
+
+
